@@ -935,6 +935,7 @@ func _bar_key() -> String:
 			_state.get("queue_revision", 0) if _quick_open == "queue" else -1,
 			_quick_open == "color" and _state.get("has_file_color_grade", false),
 			_state.get("queue_loop", false) if _quick_open == "queue" else false,
+			_state.get("loop", false) if _quick_open == "queue" else false,
 			_state.get("queue_shuffle", false) if _quick_open == "queue" else false,
 			_state.get("clone_voice", false),
 			_state.get("geometry", 0),

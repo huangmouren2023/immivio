@@ -282,6 +282,7 @@ func _ready() -> void:
 		settings.get_value("video", "last_mode", {})
 	)
 	video.load_mode_lock(settings.get_value("video", "mode_lock", {}))
+	video.loop_enabled = settings.get_value("playback", "single_loop", false) == true
 	video.subtitle_distance = float(settings.get_value("subtitles", "distance", 5.0))
 	video.subtitle_position = video.SubtitleDepth.restore_position(settings)
 	video.subtitle_size = clampf(float(settings.get_value("subtitles", "size", 1.0)), 0.5, 2.0)

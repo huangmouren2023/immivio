@@ -13,19 +13,19 @@ func _init(owner: Node3D) -> void:
 
 func draw() -> void:
 	var panel: MeshInstance3D = menu._quad(
-		Vector2(1.12, 0.445), Vector3(0, 0.4975, 0.001), Color(menu.PANEL, 0.94), 10
+		Vector2(1.12, 0.515), Vector3(0, 0.5325, 0.001), Color(menu.PANEL, 0.94), 10
 	)
 	menu.add_child(panel)
 	menu._decorations.append(panel)
-	var heading: Label3D = menu._label(menu.I18n.t("Queue"), Vector3(-0.49, 0.68, 0.004), 20)
+	var heading: Label3D = menu._label(menu.I18n.t("Queue"), Vector3(-0.49, 0.75, 0.004), 20)
 	heading.font = menu.ui_font_bold()
 	heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	menu._glyph(menu.QUICK_CLOSE, "close", Vector2(0.49, 0.68), 0.06, true, menu.I18n.t("Close"))
+	menu._glyph(menu.QUICK_CLOSE, "close", Vector2(0.49, 0.75), 0.06, true, menu.I18n.t("Close"))
 	actions.clear()
 	var entries: Array = menu._state.get("queue_items", [])
 	offset = clampi(offset, 0, maxi(0, ((entries.size() - 1) / ROWS) * ROWS))
 	var order_label: Label3D = menu._label(
-		menu.I18n.t("Playback order"), Vector3(-0.49, 0.605, 0.004), 16
+		menu.I18n.t("Playback order"), Vector3(-0.49, 0.675, 0.004), 16
 	)
 	order_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	menu.choices.field(
@@ -36,12 +36,12 @@ func draw() -> void:
 			"compact": true,
 			"choices": [{"value": false, "label": "In order"}, {"value": true, "label": "Shuffle"}]
 		},
-		Vector2(-0.19, 0.605),
+		Vector2(-0.19, 0.675),
 		0.30,
 		0.055
 	)
 	var repeat_label: Label3D = menu._label(
-		menu.I18n.t("Repeat queue"), Vector3(0.015, 0.605, 0.004), 16
+		menu.I18n.t("Repeat queue"), Vector3(0.015, 0.675, 0.004), 16
 	)
 	repeat_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	menu.choices.field(
@@ -52,8 +52,24 @@ func draw() -> void:
 			"compact": true,
 			"choices": [{"value": false, "label": "Off"}, {"value": true, "label": "On"}]
 		},
-		Vector2(0.40, 0.605),
+		Vector2(0.40, 0.675),
 		0.24,
+		0.055
+	)
+	var single_label: Label3D = menu._label(
+		menu.I18n.t("Single repeat"), Vector3(-0.49, 0.605, 0.004), 16
+	)
+	single_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	menu.choices.field(
+		null,
+		{
+			"key": "single_loop",
+			"value": menu._state.get("loop", false),
+			"compact": true,
+			"choices": [{"value": false, "label": "Off"}, {"value": true, "label": "On"}]
+		},
+		Vector2(-0.19, 0.605),
+		0.30,
 		0.055
 	)
 	for i in range(offset, mini(entries.size(), offset + ROWS)):

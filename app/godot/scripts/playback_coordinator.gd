@@ -350,6 +350,14 @@ func _on_player_setting(key: String, value: Variant) -> void:
 		host.settings.set_value("playback", key, bool(value))
 		host.settings.save(host.settings_path)
 		return
+	if key == "single_loop":
+		if not value is bool:
+			return
+		host.video.loop_enabled = bool(value)
+		host.settings.set_value("playback", key, bool(value))
+		host.settings.save(host.settings_path)
+		host.video.changed.emit()
+		return
 	match key:
 		"stereo_focus_mode", "stereo_focus":
 			host.video.set_stereo_focus(key, value)

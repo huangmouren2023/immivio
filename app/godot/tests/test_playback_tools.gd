@@ -366,6 +366,15 @@ func _run() -> void:
 	loop_saved.load(main.settings_path)
 	check(loop_saved.get_value("playback", "queue_loop", false), "Queue loop preference persists")
 	main._on_player_setting("queue_loop", false)
+	main._on_player_setting("single_loop", true)
+	check(main.video.loop_enabled, "Single-video loop setting reaches the video player")
+	var single_saved := ConfigFile.new()
+	single_saved.load(main.settings_path)
+	check(
+		single_saved.get_value("playback", "single_loop", false),
+		"Single-video loop preference persists"
+	)
+	main._on_player_setting("single_loop", false)
 	main._queue_action("queue_play_0")
 	check(
 		main.playback_queue._order.front() == main.video.local_uri,

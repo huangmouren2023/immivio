@@ -39,7 +39,7 @@ from configs.dependencies import (
 LOCK = {**TOOLCHAIN, **TOOLCHAIN["android"]}
 DISTRIBUTION_CHANNEL = "web"
 # Public certificate fingerprint of the project-owned Android release key.
-CERTIFICATE_SHA256 = "89b2a063d2783d04971415ccc1d98eb47eefd7fd343e242a61931a22f786d89b"
+CERTIFICATE_SHA256 = "7cd5fe669c1fb3a18131dc2edcbd5ad84eccbaf784be1cfc45a28a400e6d9f08"
 
 
 def stop_process(process):
