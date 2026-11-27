@@ -180,14 +180,14 @@ class VariantIdentityBoundaries(unittest.TestCase):
         with patch.dict(os.environ, {"IMMIVIO_DEVELOPMENT_PACKAGE": "1"}):
             self.assertEqual(
                 builder.android_identity("Debug")["application_id"],
-                "com.northboundwisdom.immivio.dev",
+                "com.laodu.immivio.dev",
             )
             with self.assertRaisesRegex(RuntimeError, "requires Debug"):
                 builder.android_identity("Release")
         with patch.dict(os.environ, {"IMMIVIO_DEVELOPMENT_PACKAGE": "0"}):
             self.assertEqual(
                 builder.android_identity()["application_id"],
-                "com.northboundwisdom.immivio",
+                "com.laodu.immivio",
             )
 
     def test_package_and_label_are_separate_and_presets_restore_after_failure(self):
@@ -204,7 +204,7 @@ class VariantIdentityBoundaries(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "simulated"):
                 with builder.variant_export_presets() as identity:
                     self.assertEqual(
-                        identity["application_id"], "com.northboundwisdom.immivio"
+                        identity["application_id"], "com.laodu.immivio"
                     )
                     self.assertEqual(
                         path.read_text().count('package/name="Immivio"'), 3

@@ -536,11 +536,11 @@ def android_identity(build_type=None):
         if build_type is not None and build_type != "Debug":
             raise RuntimeError("The isolated development package requires Debug")
         return {
-            "application_id": "com.northboundwisdom.immivio.dev",
+            "application_id": "com.laodu.immivio.dev",
             "application_label": "Immivio Dev",
         }
     return {
-        "application_id": "com.northboundwisdom.immivio",
+        "application_id": "com.laodu.immivio",
         "application_label": "Immivio",
     }
 

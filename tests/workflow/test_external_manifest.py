@@ -110,7 +110,7 @@ class ExportManifestGate(unittest.TestCase):
                 calls.append(command)
                 if log == "base-apk-manifest.log":
                     (logs / log).write_text(
-                        "package: name='com.northboundwisdom.immivio'\n"
+                        "package: name='com.laodu.immivio'\n"
                         "application-label:'Immivio'\n"
                     )
                 elif log == "base-apk-xmltree.log":
@@ -168,7 +168,7 @@ class ExportManifestGate(unittest.TestCase):
         lines = [
             "N: android=http://schemas.android.com/apk/res/android (line=2)",
             "  E: manifest (line=2)",
-            '    A: package="com.northboundwisdom.immivio" (Raw: "com.northboundwisdom.immivio")',
+            '    A: package="com.laodu.immivio" (Raw: "com.laodu.immivio")',
             "    E: application (line=3)",
             "      A: http://schemas.android.com/apk/res/android:appCategory(0x01010545)=2",
             "      A: android:isGame(0x010103f4)=false",
@@ -244,7 +244,7 @@ class ExportManifestGate(unittest.TestCase):
                 def run(_args, *, env, log, **kwargs):
                     if log == "base-apk-manifest.log":
                         (logs / log).write_text(
-                            "package: name='com.northboundwisdom.immivio'\napplication-label:'Immivio'\n"
+                            "package: name='com.laodu.immivio'\napplication-label:'Immivio'\n"
                         )
                     elif log == "base-apk-xmltree.log":
                         real_run(
